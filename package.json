@@ -2,8 +2,10 @@
   "name": "track-js-data-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
   "scripts": {
+    "build": "rm -rf ./dist && tsc",
     "commit": "git-cz",
     "lint": "eslint . --ext=ts",
     "prepare": "npm run build"
@@ -11,7 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "request": "^2.81.0"
+    "axios": "^0.19.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
