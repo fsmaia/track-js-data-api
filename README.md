@@ -1,68 +1,107 @@
-# track-js-data-api
-NodeJS implementation of the Track JS Data Api
+<p align="center">
+  <a href="https://trackjs.com/" target="_blank" align="center">
+    <img src="https://trackjs.com/assets/external/github_readme.svg" width="280">
+  </a>
+  <br />
+</p>
 
-# Prerequisites
-You'll need to get a Track JS API Access API key and a Track JS API Access Customer ID from  
+# TrackJS Data API for NodeJS
+
+NodeJS implementation of the Track JS Data API.
+
+## Reference
+
+- [TrackJS Data API Documentation](https://docs.trackjs.com/data-api/)
+
+## Prerequisites
+
+You'll need to get a Track JS API key and a Track JS API Customer ID from
 https://my.trackjs.com/Account/Organization.
 
-#Installation and Initialization
+## Usage
 
-````
+Install the dependency:
+
+```
 npm install track-js-data-api
-````
+```
 
-Then in your Node application
+Then in your Node application:
 
-````
-const trackjs = require('track-js-data-api');
+```js
+import { Client } from 'track-js-data-api';
 
-track.init({ apiKey: '<insert your apikey here>', customerId: '<insert your customerId here>' });
-````
+const trackJs = new Client(
+  '<insert your apiKey here>',
+  '<insert your customerId here>'
+);
+```
 
 After that you are good to go!
 
-#Available Exports
+## Available exports
 
-## errors
+### trackJs.getErrors(params)
 
-`trackjs.errors(configObj, cb)`
-http://docs.trackjs.com/data-api/errors
+API reference: http://docs.trackjs.com/data-api/errors
 
-## errorsByDay
+| Parameter      | type            | Required | Description                                                                                   |
+| -------------- | --------------- | -------- | --------------------------------------------------------------------------------------------- |
+| `application`  | String          | no       | Filter the results to only the Application key provided.                                      |
+| `endDate`      | ISO 8601 String | no       | Filter the results to only return errors before this date. Time precision is within 1 second. |
+| `startDate`    | ISO 8601 String | no       | Filter the results to only return errors after this date. Time precision is within 1 second.  |
+| `page`         | Number          | no       | The page of data you want returned. By default, the first page of data is returned.           |
+| `size`         | Number          | no       | The size of the page of data you want returned.                                               |
+| `query`        | Number          | no       | Filter the results to errors that match the supplied query term.                              |
+| `includeStack` | Boolean         | no       | Whether to return a stackTrace with the Error response.                                       |
 
-`trackjs.errorsByDay(configObj, cb)`
-http://docs.trackjs.com/data-api/errors-by-day
+### trackJs.getErrorsByDay(params)
 
-## errorsByMessage
+API reference: http://docs.trackjs.com/data-api/errors-by-day
 
-`trackjs.errorsByMessage(configObj, cb)`
-http://docs.trackjs.com/data-api/errors-by-message
+| Parameter     | type            | Required | Description                                                                                                                                                                                                                                                                                          |
+| ------------- | --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `application` | String          | no       | Filter the results to only the Application key provided.                                                                                                                                                                                                                                             |
+| `endDate`     | ISO 8601 String | no       | Filter the results to only return errors before this date. Time precision is within 1 second.                                                                                                                                                                                                        |
+| `startDate`   | ISO 8601 String | no       | Filter the results to only return errors after this date. Time precision is within 1 second.                                                                                                                                                                                                         |
+| `page`        | Number          | no       | The page of data you want returned. By default, the first page of data is returned.                                                                                                                                                                                                                  |
+| `size`        | Number          | no       | The size of the page of data you want returned.                                                                                                                                                                                                                                                      |
+| `sort`        | String          | no       | By default the endpoint returns results sorted by date in descending order. You may adjust the sort field and sort direction. Supported fields are `date`, `count` and `usercount`. Sort directions are specified by appending `| asc` or `| desc`. Default value is `date | desc` if not specified. |
 
-## errorsByUrl
+### trackJs.getErrorsByMessage(params)
 
-`trackjs.errorsByUrl(configObj, cb)`
-http://docs.trackjs.com/data-api/errors-by-url
+API reference: http://docs.trackjs.com/data-api/errors-by-message
 
-## pageViewsByDay
+| Parameter     | type            | Required | Description                                                                                                                                                                                                                                                                                          |
+| ------------- | --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `application` | String          | no       | Filter the results to only the Application key provided.                                                                                                                                                                                                                                             |
+| `endDate`     | ISO 8601 String | no       | Filter the results to only return errors before this date. Time precision is within 1 second.                                                                                                                                                                                                        |
+| `startDate`   | ISO 8601 String | no       | Filter the results to only return errors after this date. Time precision is within 1 second.                                                                                                                                                                                                         |
+| `page`        | Number          | no       | The page of data you want returned. By default, the first page of data is returned.                                                                                                                                                                                                                  |
+| `size`        | Number          | no       | The size of the page of data you want returned.                                                                                                                                                                                                                                                      |
+| `sort`        | String          | no       | By default the endpoint returns results sorted by date in descending order. You may adjust the sort field and sort direction. Supported fields are `date`, `count` and `usercount`. Sort directions are specified by appending `| asc` or `| desc`. Default value is `date | desc` if not specified. |
 
-`trackjs.pageViewsByDay(configObj, cb)`
-http://docs.trackjs.com/data-api/pageviews-by-day
+### trackJs.getErrorsByUrl(params)
 
-# configObj
+API reference: http://docs.trackjs.com/data-api/errors-by-url
 
-All of the methods, take a config object:
+| Parameter     | type            | Required | Description                                                                                                                                                                                                                                                                                          |
+| ------------- | --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `application` | String          | no       | Filter the results to only the Application key provided.                                                                                                                                                                                                                                             |
+| `endDate`     | ISO 8601 String | no       | Filter the results to only return errors before this date. Time precision is within 1 second.                                                                                                                                                                                                        |
+| `startDate`   | ISO 8601 String | no       | Filter the results to only return errors after this date. Time precision is within 1 second.                                                                                                                                                                                                         |
+| `page`        | Number          | no       | The page of data you want returned. By default, the first page of data is returned.                                                                                                                                                                                                                  |
+| `size`        | Number          | no       | The size of the page of data you want returned.                                                                                                                                                                                                                                                      |
+| `sort`        | String          | no       | By default the endpoint returns results sorted by date in descending order. You may adjust the sort field and sort direction. Supported fields are `date`, `count` and `usercount`. Sort directions are specified by appending `| asc` or `| desc`. Default value is `date | desc` if not specified. |
 
-```json
-  {
-    startDate: <YYYY-MM-DDTHH:MM:SS<timezone>>,
-    endDate: <YYYY-MM-DDTHH:MM:SS<timezone>>,
-    page: <page number to return>,
-    size: <number of items on a page>,
-    application: <application of which to filter results by>,
-    sort: <(date|count|usercount)>|<asc|desc>
-  }
-```
+### trackJs.getPageViewsByDay(params)
 
-# Dependencies
+API reference: http://docs.trackjs.com/data-api/pageviews-by-day
 
-* Request module
+| Parameter     | type            | Required | Description                                                                                   |
+| ------------- | --------------- | -------- | --------------------------------------------------------------------------------------------- |
+| `application` | String          | no       | Filter the results to only the Application key provided.                                      |
+| `endDate`     | ISO 8601 String | no       | Filter the results to only return errors before this date. Time precision is within 1 second. |
+| `startDate`   | ISO 8601 String | no       | Filter the results to only return errors after this date. Time precision is within 1 second.  |
+| `page`        | Number          | no       | The page of data you want returned. By default, the first page of data is returned.           |
+| `size`        | Number          | no       | The size of the page of data you want returned.                                               |
