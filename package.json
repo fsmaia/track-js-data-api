@@ -4,13 +4,30 @@
   "description": "TrackJS Data API client-library for Node.js",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
+  "homepage": "https://docs.trackjs.com/data-api/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TrackJs/trackjs-api-client-js"
+  },
+  "files": [
+    "dist/**/*"
+  ],
   "scripts": {
     "build": "rm -rf ./dist && tsc",
     "commit": "git-cz",
     "lint": "eslint . --ext=ts",
     "prepare": "npm run build"
   },
-  "author": "",
+  "author": {
+    "name": "TrackJS",
+    "email": "hello@trackjs.com",
+    "url": "https://trackjs.com/"
+  },
+  "contributors": [
+    {
+      "name": "Fernando Maia"
+    }
+  ],
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2"

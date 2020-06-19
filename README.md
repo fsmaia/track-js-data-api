@@ -23,13 +23,13 @@ https://my.trackjs.com/Account/Organization.
 Install the dependency:
 
 ```
-npm install track-js-data-api
+npm install trackjs-api-client
 ```
 
 Then in your Node application:
 
 ```js
-import { Client } from 'track-js-data-api';
+import { Client } from 'trackjs-api-client';
 
 const trackJs = new Client(
   '<insert your apiKey here>',
